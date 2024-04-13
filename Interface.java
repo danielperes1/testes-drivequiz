@@ -11,41 +11,53 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Interface implements WindowListener, ActionListener {
+public class App implements WindowListener, ActionListener {
     private JFrame minhaTela;
     private JButton botaoIniciar;
     private JButton[] botoesResposta;
     private JLabel labelPergunta;
     private int pontuacaoJogador = 0;
     private String[] perguntas = {
-        "Qual é a capital do Brasil?",
-        "Quem escreveu Dom Quixote?",
-        "Qual é o maior planeta do sistema solar?"
+        "Qual e a velocidade maxima permitida em uma via urbana, onde nao ha sinalizacao indicando outra velocidade?",
+        "O que significa uma luz amarela piscando em um semaforo?'?",
+        "Qual a documentaçao necessaria para conduzir um veiculo?",
+        "O que e uma faixa de pedestres?",
+        "Qual e a penalidade para dirigir sob a influencia de alcool?",
+        "O que significa uma placa de transito com a inscriçao Pare?",
+        "Qual e a função do cinto de segurança em um veiculo?",
+        "O que significa uma placa de transito com a inscriçao De a preferencia?"
+
+
     };
     private String[][] respostas = {
-        {"Rio de Janeiro", "Brasília", "São Paulo", "Salvador"},
-        {"Machado de Assis", "Miguel de Cervantes", "Carlos Drummond de Andrade", "José de Alencar"},
-        {"Júpiter", "Terra", "Saturno", "Netuno"}
+        {"30 km/h", "50 km/h", "60 km/h", "80 km/h"},
+        {"Pode passar com cuidado", "Reduzir a velocidade e ficar preparado para parar", "Acelerar para passar antes que fique vermelho", "Parar imediatamente"},
+        {"Carteira Nacional de Habilitação (CNH) e documentos do veiculo", "Apenas a identidade", "Apenas a Carteira Nacional de Habilitaçao (CNH)", "Apenas o Certificado de Registro e Licenciamento do Veiculo (CRLV)"},
+        {"Area destinada a ultrapassagem de veiculos", "Local para estacionamento de veiculos", "Pista de corrida para pedestres", "Area demarcada na via destinada a travessia de pedestres"},
+        {"Multa leve", "Advertencia por escrito", "Multa e suspensao do direito de dirigir", "Nenhuma penalidade"},
+        {"Reduzir a velocidade", "Parar o veiculo", "Acelerar o veiculo", "Proceder com atençao"},
+        {"Prevenir roubos", "Manter o veiculo aquecido", "Evitar multas de transito", "Proteger os ocupantes em caso de colisao"},
+        {"Proceder com cuidado e dar passagem aos outros veiculos", "Obedecer as leis de transito", "Acelerar o veiculo", "Ceder passagem aos veiculos a direita"},
     };
-    private int[] respostasCorretas = {1, 2, 0}; // indice da resposta correta para cada pergunta
+    private int[] respostasCorretas = {1, 1, 0, 3, 2, 1, 3, 0 }; 
     private int perguntaAtual = 0;
 
-    public Interface() {
+    public App() {
         this.minhaTela = new JFrame("Quiz");
         this.minhaTela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JPanel painelJogo = new JPanel();
         JPanel painelBotoes = new JPanel();
         this.botaoIniciar = new JButton("Iniciar");
-        this.botaoIniciar.setBackground(Color.BLUE); // Cor de fundo do botão Iniciar
-        this.botaoIniciar.setForeground(Color.WHITE); // Cor do texto do botão Iniciar
+        this.botaoIniciar.setBackground(Color.BLUE); 
+        this.botaoIniciar.setForeground(Color.WHITE); 
         this.botaoIniciar.addActionListener(this);
         this.labelPergunta = new JLabel();
         painelJogo.add(labelPergunta);
         this.botoesResposta = new JButton[4];
         for (int i = 0; i < 4; i++) {
             botoesResposta[i] = new JButton();
-            botoesResposta[i].setBackground(Color.GRAY); // Cor de fundo dos botões de resposta
-            botoesResposta[i].setForeground(Color.WHITE); // Cor do texto dos botões de resposta
+            botoesResposta[i].setBackground(Color.GRAY); 
+            botoesResposta[i].setForeground(Color.WHITE); 
             botoesResposta[i].addActionListener(this);
             painelBotoes.add(botoesResposta[i]);
         }
@@ -129,7 +141,7 @@ public class Interface implements WindowListener, ActionListener {
     public void windowOpened(WindowEvent e) {}
 
     public static void main(String[] args) {
-        Interface quiz = new Interface();
+        App quiz = new App();
         quiz.run();
     }
 }
